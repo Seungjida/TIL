@@ -1,0 +1,35 @@
+{% comment %} import 같은 거, extends 보다는 아래 있어야 함 무조건~, 상속 안 됨 {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% comment %} 
+  static도 다 url이 있다~~!
+  물리적인 주소 말고 ! staic file의 url은 장고가 알아서 만들어줌
+  나는 static DTL에 상대주소 잘 적기만 하면 됨 
+  {% endcomment %}
+  <img src="{% static "articles/sample-1.png" %}" alt="#">
+
+  {% comment %} 추가 경로 이용 {% endcomment %}
+  <img src="{% static "sample-2.png" %}" alt="#">
+
+
+  <h1>Articles</h1>
+  <a href="{% url "articles:create" %}">CREATE</a>
+  <hr>
+  {% for article in articles %}
+    <p>글 번호: {{ article.pk }}</p>
+    <a href="{% url "articles:detail" article.pk %}">
+      <p>글 제목: {{ article.title }}</p>
+    </a>
+    <p>글 내용: {{ article.content }}</p>
+    <hr>
+  {% endfor %}
+</body>
+</html>
