@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Login</h1>
+  {% comment %} 야야 오타 주의!!!!!! {% endcomment %}
+  <form action="{% url "accounts:login" %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+</body>
+</html>
+
+{% comment %} 
+{{form}}을 넣은 html에 보여줌 -> 사용자가 값 입력
+-> 값 입력한 부분이 form이니까 이를 action에 등록된 곳으로 method 형식으로 넘겨줌
+-> url을 따라가보니 오 똑같은 login view가 실행되겠지? 근데 이번엔 POST
+-> 인자에 넣은 request값을 담은 form 형성
+-> 그 이후 알아서..
+{% endcomment %}

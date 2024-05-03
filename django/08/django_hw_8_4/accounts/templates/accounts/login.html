@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>LOGIN Page</h1>
+  
+  {% comment %} url DTL에 넣는 거 까먹지 말기....... 일단 login view가 로그인을 처리하고 redirect 하도록{% endcomment %}
+  <form action="{% url "accounts:login" %}" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value='LOGIN'>
+  </form>
+
+{% endblock content %}

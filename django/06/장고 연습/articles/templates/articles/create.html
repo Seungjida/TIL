@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Create</h1>
+
+  <form action="{% url "articles:create" %}", method='POST'>
+    {% csrf_token %}
+    {% comment %} 모델 폼이 만들어주는 건, 사용자가 데이터를 입력할 input tag만 만들어줌 {% endcomment %}
+    {{ form }}
+    <input type="submit", value="CREATE">
+  </form>
+{% endblock content %}

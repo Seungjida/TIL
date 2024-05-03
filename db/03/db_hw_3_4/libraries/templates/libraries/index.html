@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>저자 전체 목록</h1>
+  <ul>
+    {% for author in authors %}
+      {% comment %} 하나의 a 태그 안에 li하면되지.. li의 위치는 그냥 ul 안이기만 함녀 되늰 듯 {% endcomment %}
+      <a href="{% url 'libraries:detail' author.pk %}">
+        <li>이름 : {{ author.name }}</li>
+        <li>국적 : {{ author.nationality }}</li>
+        <li>집필 권 수: {{ author.book_set.all|length }}권</li>
+      </a>
+      <hr>
+    {% endfor %}
+  </ul>
+{% endblock content %}

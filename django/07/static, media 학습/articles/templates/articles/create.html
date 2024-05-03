@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Create</h1>
+  {% comment %}  form 기본적으로 text만 보내기 때문에 enctype="multipart/form-data 추가하여 파일 업로드 데이터가 가능하도록 해야 함 {% endcomment %}
+  <form action="{% url "articles:create" %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url "articles:index" %}">[back]</a>
+</body>
+</html>
